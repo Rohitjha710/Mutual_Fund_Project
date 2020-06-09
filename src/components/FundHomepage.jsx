@@ -8,10 +8,13 @@ class FundHomepage extends Component {
         className="fund"
         w={["98%", "100%", "48%"]}
         minH="200px"
-        borderBottom="1px offset black"
+        borderBottom="1px outset black"
+        borderLeft="1px outset transparent"
+        borderRight="1px outset transparent"
+        borderTop="1px outset transparent"
       >
         <Flex className="fundWrap" direction="column">
-          <Heading as="h3" size="1rem" marginBottom="1rem">
+          <Heading className="heading" as="h3" fontSize="1.5rem" marginBottom="1rem">
             {fund.name}
           </Heading>
           <Flex wrap="wrap">
@@ -19,7 +22,7 @@ class FundHomepage extends Component {
               <Text fontSize="1rem" fontWeight="300" color="hsl(0,0%,40%)">
                 Type
               </Text>
-              <Text fontSize="1.5rem" fontWeight="600">
+              <Text fontSize="1.5rem" fontWeight="100">
                 {fund.fund_type}
               </Text>
             </Box>
@@ -27,7 +30,7 @@ class FundHomepage extends Component {
               <Text fontSize="1rem" fontWeight="300" color="hsl(0,0%,40%)">
                 Plan
               </Text>
-              <Text fontSize="1.5rem" fontWeight="600">
+              <Text fontSize="1.5rem" fontWeight="100">
                 {fund.plan}
               </Text>
             </Box>
@@ -37,7 +40,7 @@ class FundHomepage extends Component {
               </Text>
               <Text
                 fontSize="1.5rem"
-                fontWeight="600"
+                fontWeight="100"
                 color={
                   fund.returns.year_1 < 0 ? "hsl(0,100%,50%)" : "(120,100%,50%)"
                 }
@@ -51,7 +54,7 @@ class FundHomepage extends Component {
               </Text>
               <Text
                 fontSize="1.5rem"
-                fontWeight="600"
+                fontWeight="100"
                 color={
                   fund.returns.year_3 < 0
                     ? "hsl(0,100%,50%)"
@@ -65,7 +68,7 @@ class FundHomepage extends Component {
               <Text fontSize="1rem" fontWeight="300" color="hsl(0,0%,40%)">
                 Category
               </Text>
-              <Text fontSize="1.5rem" fontWeight="600">
+              <Text fontSize="1.5rem" fontWeight="100">
                 {fund.fund_category}
               </Text>
             </Box>
