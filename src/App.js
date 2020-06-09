@@ -1,10 +1,12 @@
-import React from 'react';
-
+import React from "react";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import Homepage from "./components/Homepage";
 function App() {
   return (
-    <h1 className="App">
-    hello world
-    </h1>
+    <ThemeProvider>
+      <CSSReset />
+      <Homepage />
+    </ThemeProvider>
   );
 }
 

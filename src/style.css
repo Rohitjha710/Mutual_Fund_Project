@@ -1,0 +1,15 @@
+/* .fund
+{
+    background-color: blue;
+} */
+.fund:hover
+{
+    border: 1px solid black;
+}
+.fundWrap{
+    background-color:hsl(0,0%,98%);
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-right: 2%;
+    height: 100%;
+}
