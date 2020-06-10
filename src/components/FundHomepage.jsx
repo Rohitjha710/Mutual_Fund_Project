@@ -42,7 +42,9 @@ class FundHomepage extends Component {
                 fontSize="1.5rem"
                 fontWeight="100"
                 color={
-                  fund.returns.year_1 < 0 ? "hsl(0,100%,50%)" : "(120,100%,50%)"
+                  fund.returns.year_1 < 0
+                    ? "hsl(0,100%,50%)"
+                    : "hsl(120,100%,50%)"
                 }
               >
                 {fund.returns.year_1}
