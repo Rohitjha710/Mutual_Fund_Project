@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Fund from "./FundHomepage";
+// import SpinnerComponent from "./spinner";
 import { Flex, Spinner } from "@chakra-ui/core";
 import { connect } from "react-redux";
 class FundsHomePage extends Component {
@@ -17,8 +18,10 @@ class FundsHomePage extends Component {
             mt="20%"
           />
         )} */}
-        {this.props.funds.map(fund => (
-          <Fund key={fund.name} fund={fund} />
+        {/* {console.log("fundsinHomepage called")} */}
+        {
+        this.props.funds.map(fund => (
+          <Fund key={fund.code} fund={fund} />
         ))}
       </Flex>
     );

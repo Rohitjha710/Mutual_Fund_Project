@@ -9,7 +9,7 @@ import {
   Text,
   PopoverCloseButton
 } from "@chakra-ui/core";
-import { sortFundsByParam } from "../actions/mfActions";
+import { sortFundsByParam, resetSort } from "../actions/mfActions";
 import { connect } from "react-redux";
 class Sorting extends Component {
   constructor(props) {
@@ -17,9 +17,14 @@ class Sorting extends Component {
     this.onChange = this.onChange.bind(this);
   }
   onChange(param, sortD) {
-    // console.log(param);
-    // console.log(sortD);
-    this.props.sortFundsByParam(param, sortD);
+    const { categoryFilter, planFilter, typeFilter } = this.props;
+    this.props.sortFundsByParam(
+      param,
+      sortD,
+      typeFilter,
+      planFilter,
+      categoryFilter
+    );
   }
   render() {
     return (
@@ -91,6 +96,7 @@ class Sorting extends Component {
                 HIGH
               </Button>
             </Box>
+            <Button onClick={() => this.props.resetSort()}>Reset</Button>
           </PopoverBody>
         </PopoverContent>
       </Popover>
@@ -98,6 +104,12 @@ class Sorting extends Component {
   }
 }
 const mapStateToProps = state => ({
-  s: state.funds.fundsList
+  categoryFilter: state.funds.filters.fund_category,
+  typeFilter: state.funds.filters.fund_type,
+  planFilter: state.funds.filters.plan,
+  sortOrder: state.funds.sortOrder,
+  sortKey: state.funds.sortKey
 });
-export default connect(mapStateToProps, {sortFundsByParam})(Sorting);
+export default connect(mapStateToProps, { resetSort, sortFundsByParam })(
+  Sorting
+);
