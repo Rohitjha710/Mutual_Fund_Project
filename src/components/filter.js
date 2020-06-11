@@ -7,10 +7,12 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
-  Heading
+  Text,
+  Icon,
+  PopoverCloseButton
 } from "@chakra-ui/core";
 
-import { filteredFunds,resetFilter } from "../actions/mfActions";
+import { filteredFunds, resetFilter } from "../actions/mfActions";
 import { connect } from "react-redux";
 class Filter extends Component {
   checkboxChangeCategory = e => {
@@ -41,17 +43,20 @@ class Filter extends Component {
     return (
       <Popover>
         <PopoverTrigger>
-          <Button>Filter</Button>
+          <Button w={["200px", "180px", "200px"]} mb="1rem">
+            Filter
+          </Button>
         </PopoverTrigger>
-        <PopoverContent zIndex={4}>
-          {/* <PopoverArrow /> */}
-          {/* <PopoverCloseButton /> */}
-          {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
+        <PopoverContent zIndex={4} w={["100%","40%","20%"]}>
+          <PopoverCloseButton />
           <PopoverBody>
-            <Button onClick={()=>this.props.resetFilter()}> Reset</Button>
-            <Heading as="h3" fontSize="1.5rem">
+            <Button onClick={() => this.props.resetFilter()} variantColor="red">
+              <Icon name="repeat" mr="5px"></Icon>Reset
+            </Button>
+
+            <Text fontWeight="600" color="hsl(0,0%,40%)" fontSize="1.2rem" my="10px">
               Type
-            </Heading>
+            </Text>
             <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangeType}
@@ -64,9 +69,9 @@ class Filter extends Component {
               ))}
             </CheckboxGroup>
 
-            <Heading as="h3" fontSize="1.5rem">
+            <Text fontWeight="600" color="hsl(0,0%,40%)" fontSize="1.2rem" my="10px">
               Plan
-            </Heading>
+            </Text>
             <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangePlan}
@@ -78,9 +83,9 @@ class Filter extends Component {
                 </Checkbox>
               ))}
             </CheckboxGroup>
-            <Heading as="h3" fontSize="1.5rem">
+            <Text fontWeight="600" color="hsl(0,0%,40%)" fontSize="1.2rem" my="10px">
               Category
-            </Heading>
+            </Text>
             <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangeCategory}
@@ -109,4 +114,4 @@ const mapStateToProps = state => ({
   sortOrder: state.funds.sortOrder,
   sortKey: state.funds.sortKey
 });
-export default connect(mapStateToProps, { filteredFunds,resetFilter })(Filter);
+export default connect(mapStateToProps, { filteredFunds, resetFilter })(Filter);

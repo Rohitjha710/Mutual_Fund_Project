@@ -6,8 +6,8 @@ import {
   PopoverBody,
   Button,
   Box,
-  Text,
-  PopoverCloseButton
+  Text,Icon,
+  PopoverCloseButton,PopoverArrow
 } from "@chakra-ui/core";
 import { sortFundsByParam, resetSort } from "../actions/mfActions";
 import { connect } from "react-redux";
@@ -22,81 +22,259 @@ class Sorting extends Component {
       param,
       sortD,
       typeFilter,
-      planFilter,
+      planFilter, 
       categoryFilter
     );
   }
   render() {
+    const { sortKey, sortOrder } = this.props;
     return (
       <Popover>
         <PopoverTrigger>
-          <Button w="20%">Sort Funds</Button>
+          <Button w={["200px", "180px", "200px"]} mb="1rem">
+            Sort Funds
+          </Button>
         </PopoverTrigger>
-        <PopoverContent zIndex={4} w="20%">
-          {/* <PopoverArrow /> */}
+        <PopoverContent zIndex={4} w={["100%","40%","20%"]}>
+          
           <PopoverCloseButton />
           <PopoverBody>
+
+          <Button onClick={() => this.props.resetSort()} variantColor="red"><Icon name="repeat" mr="5px"></Icon>Reset</Button>
             <Box className="sortParams">
-              <Text>Name</Text>
-              <Button mr="10px" onClick={() => this.onChange("name", "ASC")}>
+              <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
+                Name
+              </Text>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "name" && sortOrder === "ASC"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                onClick={() => this.onChange("name", "ASC")}
+              >
                 ASC
               </Button>
-              <Button onClick={() => this.onChange("name", "desc")}>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "name" && sortOrder === "desc"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("name", "desc")}
+              >
                 DESC
               </Button>
             </Box>
             <Box className="sortParams">
-              <Text>CATEGORY</Text>
+              <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
+                CATEGORY
+              </Text>
               <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
                 mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "fund_category" && sortOrder === "ASC"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
                 onClick={() => this.onChange("fund_category", "ASC")}
               >
                 ASC
               </Button>
-              <Button onClick={() => this.onChange("fund_category", "desc")}>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "fund_category" && sortOrder === "desc"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("fund_category", "desc")}
+              >
                 DESC
               </Button>
             </Box>
             <Box className="sortParams">
-              <Text>TYPE</Text>
+              <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
+                TYPE
+              </Text>
               <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
                 mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "fund_type" && sortOrder === "ASC"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
                 onClick={() => this.onChange("fund_type", "ASC")}
               >
                 ASC
               </Button>
-              <Button onClick={() => this.onChange("fund_type", "desc")}>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "fund_type" && sortOrder === "desc"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("fund_type", "desc")}
+              >
                 DESC
               </Button>
             </Box>
             <Box className="sortParams">
-              <Text>PLAN</Text>
-              <Button mr="10px" onClick={() => this.onChange("plan", "ASC")}>
+              <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
+                {" "}
+                PLAN
+              </Text>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "plan" && sortOrder === "ASC"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("plan", "ASC")}
+              >
                 ASC
               </Button>
-              <Button onClick={() => this.onChange("plan", "desc")}>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "plan" && sortOrder === "desc"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("plan", "desc")}
+              >
                 DESC
               </Button>
             </Box>
             <Box className="sortParams">
-              <Text>1Y RETURNS</Text>
-              <Button mr="10px" onClick={() => this.onChange("year_1", "ASC")}>
+              <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
+                1Y RETURNS
+              </Text>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "year_1" && sortOrder === "ASC"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("year_1", "ASC")}
+              >
                 LOW
               </Button>
-              <Button onClick={() => this.onChange("year_1", "desc")}>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "year_1" && sortOrder === "desc"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("year_1", "desc")}
+              >
                 HIGH
               </Button>
             </Box>{" "}
             <Box className="sortParams">
-              <Text>3Y RETURNS</Text>
-              <Button mr="10px" onClick={() => this.onChange("year_3", "ASC")}>
+              <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
+                3Y RETURNS
+              </Text>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "year_3" && sortOrder === "ASC"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                
+                onClick={() => this.onChange("year_3", "ASC")}
+              >
                 LOW
               </Button>
-              <Button onClick={() => this.onChange("year_3", "desc")}>
+              <Button
+                color="hsl(0,0%,60%)"
+                fontSize="0.9rem"
+                fontWeight="300"
+                mr="10px"
+                w="40%"
+                variantColor={
+                  sortKey === "year_3" && sortOrder === "desc"
+                    ? "blue"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,60%)"
+                  
+                onClick={() => this.onChange("year_3", "desc")}
+              >
                 HIGH
               </Button>
             </Box>
-            <Button onClick={() => this.props.resetSort()}>Reset</Button>
           </PopoverBody>
         </PopoverContent>
       </Popover>
