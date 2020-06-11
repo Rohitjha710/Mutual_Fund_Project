@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
-import { Provider } from "react-redux";
-import store from "./store";
 import Homepage from "./components/Homepage";
-function App() {
+import { fetchAllFunds } from "./actions/mfActions";
+import { connect } from "react-redux";
+function App(props) {
+  useEffect(() => {
+    props.fetchAllFunds();
+  }, []);
   return (
-    <Provider store={store}>
-    <ThemeProvider>
-      <CSSReset />
-      <Homepage />
-    </ThemeProvider>
-    </Provider>
+      <ThemeProvider>
+        <CSSReset />
+        <Homepage />
+      </ThemeProvider>
+
   );
 }
-
-export default App;
+export default connect(null, { fetchAllFunds })(App);

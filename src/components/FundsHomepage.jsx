@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import Fund from "./FundHomepage";
 import { Flex, Spinner } from "@chakra-ui/core";
-import { fetchFunds } from "../actions/mfActions";
 import { connect } from "react-redux";
 class FundsHomePage extends Component {
-  componentDidMount() {
-    this.props.fetchFunds();
-  }
   render() {
     return (
       <Flex mx={["2%", "20%", "5.3%"]} wrap="wrap" justify="space-between">
-        {this.props.funds.length === 0 ? (
+        {/* {this.props.funds.length === 0 && (
           <Spinner
             thickness="4px"
             speed="0.65s"
@@ -20,15 +16,16 @@ class FundsHomePage extends Component {
             mx="10%"
             mt="20%"
           />
-        ) : (
-          this.props.funds.map(fund => <Fund key={fund.name} fund={fund} />)
-        )}
+        )} */}
+        {this.props.funds.map(fund => (
+          <Fund key={fund.name} fund={fund} />
+        ))}
       </Flex>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  funds: state.funds.fundsList
+  funds: state.funds.topHundredFunds
 });
-export default connect(mapStateToProps, { fetchFunds })(FundsHomePage);
+export default connect(mapStateToProps, {})(FundsHomePage);

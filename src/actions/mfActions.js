@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import { FETCH_FUNDS, SORT_PARAM, FILTER_FUND } from "./types";
-export const fetchFunds = () => dispatch => {
+import { FETCH_FUNDS, SORT_PARAM, FILTER_FUND, FETCH_ALL_FUNDS } from "./types";
+export const fetchAllFunds = () => dispatch => {
   fetch("https://api.kuvera.in/api/v3/funds.json")
     .then(res => res.json())
     .then(funds => {
@@ -29,21 +29,18 @@ export const fetchFunds = () => dispatch => {
       }
 
       dispatch({
-        type: FETCH_FUNDS,
-        payload: filteredFunds.slice(0, 100),
+        type: FETCH_ALL_FUNDS,
+        allFunds: filteredFunds,
+        topHundredFunds: filteredFunds.slice(0, 100),
         fund_category,
         fund_type,
         plan
       });
     });
 };
-export const filteredFunds = (filterBy, value) => dispatch => {
-  fetch("https://api.kuvera.in/api/v3/funds.json")
-    .then(res => res.json())
-    .then(funds => {
-      dispatch({ type: FILTER_FUND, filterBy, value ,payload:funds });
-    });
-  
+export const filteredFunds = (filterParam, value) => dispatch => {
+
+    dispatch({ type: FILTER_FUND, filterParam, value });   
 };
 export const sortFundsByParam = (sortKey, order) => dispatch => {
   dispatch({ type: FETCH_FUNDS, payload: [] });

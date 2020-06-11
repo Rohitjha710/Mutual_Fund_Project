@@ -40,6 +40,7 @@ class Filter extends Component {
             <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangeType}
+              defaultValue={this.props.typeFilter}
             >
               {this.props.fund_type.map(type => (
                 <Checkbox value={type}>{type}</Checkbox>
@@ -50,18 +51,20 @@ class Filter extends Component {
             <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangePlan}
+              defaultValue={this.props.planFilter}
             >
               {this.props.plan.map(plan => (
-                <Checkbox value={plan}>{plan}</Checkbox>
+                <Checkbox  value={plan}>{plan}</Checkbox>
               ))}
             </CheckboxGroup>
             <Heading as="h3" fontSize="1.5rem">Category</Heading>
             <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangeCategory}
+              defaultValue={this.props.categoryFilter}
             >
               {this.props.fund_category.map(category => (
-                <Checkbox value={category}>{category}</Checkbox>
+                <Checkbox value={category} >{category}</Checkbox>
               ))}
             </CheckboxGroup>
 
@@ -75,6 +78,9 @@ class Filter extends Component {
 const mapStateToProps = state => ({
   fund_category: state.funds.fund_category,
   fund_type: state.funds.fund_type,
-  plan: state.funds.plan
+  plan: state.funds.plan,
+  categoryFilter :state.funds.filters.fund_category,
+  typeFilter:state.funds.filters.fund_type,
+  planFilter:state.funds.filters.plan
 });
 export default connect(mapStateToProps, { filteredFunds })(Filter);
