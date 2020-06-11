@@ -3,7 +3,8 @@ import {
   SORT_PARAM,
   FETCH_ALL_FUNDS,
   FILTER_FUND,
-  RESET_SORT
+  RESET_SORT,
+  RESET_FILTER
 } from "../actions/types";
 const initialState = {
   allFunds: [],
@@ -18,7 +19,7 @@ const initialState = {
 function sortFundsGeneric(filteredFunds, sortKey, order) {
   console.log(sortKey + "and" + order);
   let flag = order === "ASC" ? -1 : 1;
-  filteredFunds.sort(function(a, b) {
+  filteredFunds.sort(function(a, b){
     let x =
       sortKey === "year_1" || sortKey === "year_3"
         ? a["returns"][sortKey]
@@ -68,28 +69,48 @@ export default function(state = initialState, action) {
         plan: action.plan
       };
     case RESET_SORT:
-        let Filters = {
+      let Filters = {
         ...state.filters
+      };
+      let isFiltersSet =
+        Filters.fund_category.length +
+          Filters.fund_type.length +
+          Filters.plan ===
+        0
+          ? false
+          : true;
+      if (isFiltersSet) {
+        let filteredFunds = [...state.allFunds];
+        filteredFunds = filterFundsGeneric(filteredFunds, Filters);
+        return {
+          ...state,
+          topHundredFunds: filteredFunds.slice(0, 100),
+          sortKey: "",
+          sortOrder: ""
         };
-        let isFiltersSet = (Filters.fund_category.length + Filters.fund_type.length +Filters.plan) === 0 ?false:true;
-        if(isFiltersSet)
-        { 
-          let filteredFunds=[...state.allFunds];
-          filteredFunds = filterFundsGeneric(filteredFunds,Filters)  
-      return {
-        
-        ...state,
-        topHundredFunds: filteredFunds.slice(0, 100),
-        sortKey: "",
-        sortOrder: ""
       }
-        }
       return {
         ...state,
         topHundredFunds: state.allFunds.slice(0, 100),
         sortKey: "",
         sortOrder: ""
       };
+    case RESET_FILTER:
+      if(state.sortKey !== "")
+      {
+        let funds= [...state.allFunds];
+        let sortedFunds = sortFundsGeneric(funds,state.sortKey,state.sortOrder);
+        return {
+          ...state,
+          topHundredFunds: sortedFunds.slice(0,100),
+          filters: { fund_category: [], fund_type: [], plan: [] }
+        }
+      }
+      return {
+        ...state,
+        topHundredFunds: state.allFunds.slice(0,100),
+        filters: { fund_category: [], fund_type: [], plan: [] }
+      }
     case SORT_PARAM:
       const { sortKey, order, typeFilter, planFilter, categoryFilter } = action;
       let isFilterSet =
@@ -111,7 +132,7 @@ export default function(state = initialState, action) {
           sortKey: action.sortKey,
           sortOrder: action.order,
           topHundredFunds: filteredFunds.slice(0, 100)
-        }
+        };
       } else {
         return {
           ...state,

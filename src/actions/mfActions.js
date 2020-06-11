@@ -1,8 +1,10 @@
 /* eslint-disable no-undef */
-import { RESET_SORT, SORT_PARAM, FILTER_FUND, FETCH_ALL_FUNDS } from "./types";
+import { RESET_SORT,RESET_FILTER, SORT_PARAM, FILTER_FUND, FETCH_ALL_FUNDS } from "./types";
 export const resetSort = () => dispatch => {
-  console.log("reset sort called");
   dispatch({ type: RESET_SORT });
+};
+export const resetFilter = () => dispatch => {
+  dispatch({ type: RESET_FILTER });
 };
 export const fetchAllFunds = () => dispatch => {
   fetch("https://api.kuvera.in/api/v3/funds.json")

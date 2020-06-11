@@ -18,7 +18,6 @@ class FundsHomePage extends Component {
             mt="20%"
           />
         )} */}
-        {/* {console.log("fundsinHomepage called")} */}
         {
         this.props.funds.map(fund => (
           <Fund key={fund.code} fund={fund} />

@@ -10,7 +10,7 @@ import {
   Heading
 } from "@chakra-ui/core";
 
-import { filteredFunds } from "../actions/mfActions";
+import { filteredFunds,resetFilter } from "../actions/mfActions";
 import { connect } from "react-redux";
 class Filter extends Component {
   checkboxChangeCategory = e => {
@@ -48,6 +48,7 @@ class Filter extends Component {
           {/* <PopoverCloseButton /> */}
           {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
           <PopoverBody>
+            <Button onClick={()=>this.props.resetFilter()}> Reset</Button>
             <Heading as="h3" fontSize="1.5rem">
               Type
             </Heading>
@@ -108,4 +109,4 @@ const mapStateToProps = state => ({
   sortOrder: state.funds.sortOrder,
   sortKey: state.funds.sortKey
 });
-export default connect(mapStateToProps, { filteredFunds })(Filter);
+export default connect(mapStateToProps, { filteredFunds,resetFilter })(Filter);
