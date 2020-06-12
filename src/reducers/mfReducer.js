@@ -1,10 +1,9 @@
 import {
-  FETCH_FUNDS,
   SORT_PARAM,
   FETCH_ALL_FUNDS,
   FILTER_FUND,
   RESET_SORT,
-  RESET_FILTER
+  RESET_FILTER,FUND_DETAILS
 } from "../actions/types";
 const initialState = {
   allFunds: [],
@@ -14,7 +13,8 @@ const initialState = {
   filters: { fund_category: [], fund_type: [], plan: [] },
   fund_category: [],
   fund_type: [],
-  plan: []
+  plan: [],
+  fundDetails:[]
 };
 function sortFundsGeneric(filteredFunds, sortKey, order) {
   console.log(sortKey + "and" + order);
@@ -51,13 +51,10 @@ function filterFundsGeneric(filteredFunds, filters) {
 }
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_FUNDS:
+    case FUND_DETAILS :
       return {
         ...state,
-        fundsList: action.payload,
-        fund_category: action.fund_category,
-        fund_type: action.fund_type,
-        plan: action.plan
+        fundDetails:action.fundDetails
       };
     case FETCH_ALL_FUNDS:
       return {

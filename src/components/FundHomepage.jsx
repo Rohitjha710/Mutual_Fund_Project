@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Flex, Box, Heading, Text } from "@chakra-ui/core";
 class FundHomepage extends Component {
   render() {
@@ -14,6 +15,14 @@ class FundHomepage extends Component {
         borderTop="1px outset transparent"
       >
         <Flex className="fundWrap" direction="column">
+        <Link
+          className="anchorTag"
+          to={{
+            pathname: `/${fund.code}`
+          }}
+        >
+
+        
           <Heading className="heading" as="h3" fontSize="1.5rem" marginBottom="1rem">
             {fund.name}
           </Heading>
@@ -75,6 +84,7 @@ class FundHomepage extends Component {
               </Text>
             </Box>
           </Flex>
+          </Link>
         </Flex>
       </Box>
     );

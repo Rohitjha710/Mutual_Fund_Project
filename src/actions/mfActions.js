@@ -1,10 +1,22 @@
 /* eslint-disable no-undef */
-import { RESET_SORT,RESET_FILTER, SORT_PARAM, FILTER_FUND, FETCH_ALL_FUNDS } from "./types";
+import {
+  RESET_SORT,
+  RESET_FILTER,
+  SORT_PARAM,
+  FILTER_FUND,
+  FETCH_ALL_FUNDS,
+  FUND_DETAILS
+} from "./types";
 export const resetSort = () => dispatch => {
   dispatch({ type: RESET_SORT });
 };
 export const resetFilter = () => dispatch => {
   dispatch({ type: RESET_FILTER });
+};
+export const fetchFundByCode = fundCode => dispatch => {
+  fetch(`https://api.kuvera.in/api/v3/funds/${fundCode}.json`)
+    .then(fundDetailsResponseObject => fundDetailsResponseObject.json())
+    .then(fundDetails => dispatch({ type: FUND_DETAILS, fundDetails }));
 };
 export const fetchAllFunds = () => dispatch => {
   fetch("https://api.kuvera.in/api/v3/funds.json")

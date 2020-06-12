@@ -6,6 +6,10 @@ html{
 
     background-color:hsl(0,0%,99%);
 }
+.anchorTag{
+  color: inherit;
+  text-decoration: inherit;
+}
 .fund:hover
 {
     border: 1px outset hsl(0,0%,60%);
