@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Heading, Icon, Box, Image, Flex, Text, Button } from "@chakra-ui/core";
+import { Icon, Box, Image, Flex, Text} from "@chakra-ui/core";
 class FundDetailsComponent extends Component {
   render() {
     const { fund } = this.props;
