@@ -8,8 +8,7 @@ import {
   Box,
   Text,
   Icon,
-  PopoverCloseButton,
-  PopoverArrow
+  PopoverCloseButton
 } from "@chakra-ui/core";
 import { sortFundsByParam, resetSort } from "../actions/mfActions";
 import { connect } from "react-redux";

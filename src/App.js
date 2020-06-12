@@ -9,6 +9,7 @@ import FundDetails from "./components/fundDetails";
 function App(props) {
   useEffect(() => {
     props.fetchAllFunds();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <ThemeProvider>
