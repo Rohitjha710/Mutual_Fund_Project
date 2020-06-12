@@ -6,7 +6,7 @@ html{
 
     background-color:hsl(0,0%,99%);
 }
-.anchorTag{
+.anchorTag,.knowMore{
   color: inherit;
   text-decoration: inherit;
 }
