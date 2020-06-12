@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchFundByCode } from "../actions/mfActions";
+import FundDetailsComponent from "./FundDetailsComponent";
 class FundDetails extends Component {
     componentDidMount(){
   let { fundCode } = this.props.match.params;
@@ -8,9 +9,12 @@ class FundDetails extends Component {
   this.props.fetchFundByCode(fundCode);
     }
     render() { 
-        console.log(this.props.fundDetails)
         return (  
-            <h1>hey</h1>
+            <React.Fragment>
+                {this.props.fundDetails.length !==0 && 
+                 <FundDetailsComponent fund={this.props.fundDetails[0]}/>   
+                }
+            </React.Fragment>
         );
     }
 }
