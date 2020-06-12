@@ -1,25 +1,12 @@
 import React, { Component } from "react";
 import Fund from "./FundHomepage";
-// import SpinnerComponent from "./spinner";
-import { Flex, Spinner } from "@chakra-ui/core";
+import { Flex } from "@chakra-ui/core";
 import { connect } from "react-redux";
 class FundsHomePage extends Component {
   render() {
     return (
       <Flex mx={["2%", "20%", "5.3%"]} wrap="wrap" justify="space-between">
-        {/* {this.props.funds.length === 0 && (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="5rem"
-            mx="10%"
-            mt="20%"
-          />
-        )} */}
-        {
-        this.props.funds.map(fund => (
+        {this.props.funds.map(fund => (
           <Fund key={fund.code} fund={fund} />
         ))}
       </Flex>

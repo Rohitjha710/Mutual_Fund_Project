@@ -3,7 +3,8 @@ import {
   FETCH_ALL_FUNDS,
   FILTER_FUND,
   RESET_SORT,
-  RESET_FILTER,FUND_DETAILS
+  RESET_FILTER,
+  FUND_DETAILS
 } from "../actions/types";
 const initialState = {
   allFunds: [],
@@ -14,12 +15,12 @@ const initialState = {
   fund_category: [],
   fund_type: [],
   plan: [],
-  fundDetails:[]
+  fundDetails: []
 };
 function sortFundsGeneric(filteredFunds, sortKey, order) {
   console.log(sortKey + "and" + order);
   let flag = order === "ASC" ? -1 : 1;
-  filteredFunds.sort(function(a, b){
+  filteredFunds.sort(function(a, b) {
     let x =
       sortKey === "year_1" || sortKey === "year_3"
         ? a["returns"][sortKey]
@@ -51,10 +52,10 @@ function filterFundsGeneric(filteredFunds, filters) {
 }
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FUND_DETAILS :
+    case FUND_DETAILS:
       return {
         ...state,
-        fundDetails:action.fundDetails
+        fundDetails: action.fundDetails
       };
     case FETCH_ALL_FUNDS:
       return {
@@ -93,21 +94,24 @@ export default function(state = initialState, action) {
         sortOrder: ""
       };
     case RESET_FILTER:
-      if(state.sortKey !== "")
-      {
-        let funds= [...state.allFunds];
-        let sortedFunds = sortFundsGeneric(funds,state.sortKey,state.sortOrder);
+      if (state.sortKey !== "") {
+        let funds = [...state.allFunds];
+        let sortedFunds = sortFundsGeneric(
+          funds,
+          state.sortKey,
+          state.sortOrder
+        );
         return {
           ...state,
-          topHundredFunds: sortedFunds.slice(0,100),
+          topHundredFunds: sortedFunds.slice(0, 100),
           filters: { fund_category: [], fund_type: [], plan: [] }
-        }
+        };
       }
       return {
         ...state,
-        topHundredFunds: state.allFunds.slice(0,100),
+        topHundredFunds: state.allFunds.slice(0, 100),
         filters: { fund_category: [], fund_type: [], plan: [] }
-      }
+      };
     case SORT_PARAM:
       const { sortKey, order, typeFilter, planFilter, categoryFilter } = action;
       let isFilterSet =

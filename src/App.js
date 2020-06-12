@@ -17,8 +17,7 @@ function App(props) {
         <Route exact path="/">
           <Homepage />
         </Route>
-        <Route exact path="/:fundCode" component={FundDetails}/>
-          
+        <Route exact path="/:fundCode" component={FundDetails} />
       </Router>
     </ThemeProvider>
   );

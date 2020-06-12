@@ -47,14 +47,19 @@ class Filter extends Component {
             Filter
           </Button>
         </PopoverTrigger>
-        <PopoverContent zIndex={4} w={["100%","40%","20%"]}>
+        <PopoverContent zIndex={4} w={["100%", "40%", "20%"]}>
           <PopoverCloseButton />
           <PopoverBody>
             <Button onClick={() => this.props.resetFilter()} variantColor="red">
               <Icon name="repeat" mr="5px"></Icon>Reset
             </Button>
 
-            <Text fontWeight="600" color="hsl(0,0%,40%)" fontSize="1.2rem" my="10px">
+            <Text
+              fontWeight="600"
+              color="hsl(0,0%,40%)"
+              fontSize="1.2rem"
+              my="10px"
+            >
               Type
             </Text>
             <CheckboxGroup
@@ -69,7 +74,12 @@ class Filter extends Component {
               ))}
             </CheckboxGroup>
 
-            <Text fontWeight="600" color="hsl(0,0%,40%)" fontSize="1.2rem" my="10px">
+            <Text
+              fontWeight="600"
+              color="hsl(0,0%,40%)"
+              fontSize="1.2rem"
+              my="10px"
+            >
               Plan
             </Text>
             <CheckboxGroup
@@ -83,7 +93,12 @@ class Filter extends Component {
                 </Checkbox>
               ))}
             </CheckboxGroup>
-            <Text fontWeight="600" color="hsl(0,0%,40%)" fontSize="1.2rem" my="10px">
+            <Text
+              fontWeight="600"
+              color="hsl(0,0%,40%)"
+              fontSize="1.2rem"
+              my="10px"
+            >
               Category
             </Text>
             <CheckboxGroup

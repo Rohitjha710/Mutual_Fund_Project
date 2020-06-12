@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Icon, Box, Image, Flex, Text} from "@chakra-ui/core";
+import { Icon, Box, Image, Flex, Text } from "@chakra-ui/core";
 class FundDetailsComponent extends Component {
   render() {
     const { fund } = this.props;
@@ -93,7 +93,7 @@ class FundDetailsComponent extends Component {
                 {fund.fund_type}
               </Text>
             </Box>
-            
+
             <Box minW="30%" mb="1.5rem" mr="1rem">
               <Text fontSize="1rem" fontWeight="300" color="#1f7ae0">
                 Category
@@ -152,11 +152,15 @@ class FundDetailsComponent extends Component {
               <Text fontSize="1rem" fontWeight="300" color="#1f7ae0">
                 1Y Returns
               </Text>
-              <Text  color={
+              <Text
+                color={
                   fund.returns.year_1 < 0
                     ? "hsl(0,100%,50%)"
                     : "hsl(120,100%,50%)"
-                } fontSize="1.2rem" fontWeight="100">
+                }
+                fontSize="1.2rem"
+                fontWeight="100"
+              >
                 {fund.returns.year_1}
               </Text>
             </Box>
@@ -164,11 +168,15 @@ class FundDetailsComponent extends Component {
               <Text fontSize="1rem" fontWeight="300" color="#1f7ae0">
                 3Y Returns
               </Text>
-              <Text  color={
+              <Text
+                color={
                   fund.returns.year_1 < 0
                     ? "hsl(0,100%,50%)"
                     : "hsl(120,100%,50%)"
-                } fontSize="1.2rem" fontWeight="100">
+                }
+                fontSize="1.2rem"
+                fontWeight="100"
+              >
                 {fund.returns.year_3}
               </Text>
             </Box>
@@ -176,15 +184,19 @@ class FundDetailsComponent extends Component {
               <Text fontSize="1rem" fontWeight="300" color="#1f7ae0">
                 5Y Returns
               </Text>
-              <Text  color={
+              <Text
+                color={
                   fund.returns.year_1 < 0
                     ? "hsl(0,100%,50%)"
                     : "hsl(120,100%,50%)"
-                } fontSize="1.2rem" fontWeight="100">
+                }
+                fontSize="1.2rem"
+                fontWeight="100"
+              >
                 {fund.returns.year_5}
               </Text>
             </Box>
- 
+
             <Box minW="30%" mb="1.5rem" mr="1rem">
               <Text fontSize="1rem" fontWeight="300" color="#1f7ae0">
                 Fund House
@@ -193,7 +205,8 @@ class FundDetailsComponent extends Component {
                 {fund.fund_house}
               </Text>
             </Box>
-            <Box className="knowMore"
+            <Box
+              className="knowMore"
               w="fit-content"
               h="fit-content"
               p="5px 15px 5px 10px"
@@ -202,7 +215,11 @@ class FundDetailsComponent extends Component {
               border="1px solid #ccc"
               shadow="2px 2px hsl(0, 0%, 95%)"
               bg="	#ADD8E6"
-            ><a href={fund.detail_info}>Know More <Icon name="arrow-forward"></Icon></a></Box>
+            >
+              <a href={fund.detail_info}>
+                Know More <Icon name="arrow-forward"></Icon>
+              </a>
+            </Box>
           </Flex>
         </Flex>
       </React.Fragment>

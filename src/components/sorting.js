@@ -6,8 +6,10 @@ import {
   PopoverBody,
   Button,
   Box,
-  Text,Icon,
-  PopoverCloseButton,PopoverArrow
+  Text,
+  Icon,
+  PopoverCloseButton,
+  PopoverArrow
 } from "@chakra-ui/core";
 import { sortFundsByParam, resetSort } from "../actions/mfActions";
 import { connect } from "react-redux";
@@ -22,7 +24,7 @@ class Sorting extends Component {
       param,
       sortD,
       typeFilter,
-      planFilter, 
+      planFilter,
       categoryFilter
     );
   }
@@ -35,12 +37,12 @@ class Sorting extends Component {
             Sort Funds
           </Button>
         </PopoverTrigger>
-        <PopoverContent zIndex={4} w={["100%","40%","20%"]}>
-          
+        <PopoverContent zIndex={4} w={["100%", "40%", "20%"]}>
           <PopoverCloseButton />
           <PopoverBody>
-
-          <Button onClick={() => this.props.resetSort()} variantColor="red"><Icon name="repeat" mr="5px"></Icon>Reset</Button>
+            <Button onClick={() => this.props.resetSort()} variantColor="red">
+              <Icon name="repeat" mr="5px"></Icon>Reset
+            </Button>
             <Box className="sortParams">
               <Text color="hsl(0,0%,60%)" fontSize="0.9rem" fontWeight="600">
                 Name
@@ -73,7 +75,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("name", "desc")}
               >
                 DESC
@@ -95,7 +96,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("fund_category", "ASC")}
               >
                 ASC
@@ -112,7 +112,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("fund_category", "desc")}
               >
                 DESC
@@ -134,7 +133,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("fund_type", "ASC")}
               >
                 ASC
@@ -151,7 +149,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("fund_type", "desc")}
               >
                 DESC
@@ -174,7 +171,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("plan", "ASC")}
               >
                 ASC
@@ -191,7 +187,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("plan", "desc")}
               >
                 DESC
@@ -213,7 +208,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("year_1", "ASC")}
               >
                 LOW
@@ -230,7 +224,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("year_1", "desc")}
               >
                 HIGH
@@ -252,7 +245,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                
                 onClick={() => this.onChange("year_3", "ASC")}
               >
                 LOW
@@ -269,7 +261,6 @@ class Sorting extends Component {
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,60%)"
-                  
                 onClick={() => this.onChange("year_3", "desc")}
               >
                 HIGH
