@@ -37,15 +37,15 @@ class FundDetailsComponent extends Component {
           </Link>
         </Box>
 
-        <Flex direction="column" mt="1rem" w={["100%", "100%", "80%"]} px="8%">
+        <Flex direction="column" mt="1rem" w={["100%", "80%", "80%"]} mx={["5%","8%"]}>
           <Flex wrap="wrap" justify="space-between">
             <Image
-              w={["100%", "30%"]}
+              w={["90%", "30%"]}
               src={require("../asset/fund.png")}
               alt="fund"
             />
             <Flex
-              w={["100%", "60%"]}
+              w={["90%", "60%"]}
               direction="column"
               justify="space-between"
               py="20px"
@@ -72,7 +72,7 @@ class FundDetailsComponent extends Component {
               </Text>
             </Flex>
           </Flex>
-          <Flex></Flex>
+          <Flex  className="detailsCard" w={["90%","100%"]}></Flex>
         </Flex>
       </React.Fragment>
     );
