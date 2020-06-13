@@ -12,6 +12,8 @@ import {
   PopoverCloseButton
 } from "@chakra-ui/core";
 
+import Select from 'react-select';
+
 import { filteredFunds, resetFilter } from "../actions/mfActions";
 import { connect } from "react-redux";
 class Filter extends Component {
@@ -24,9 +26,14 @@ class Filter extends Component {
     );
   };
   checkboxChangeType = e => {
+   
+    let typeFilter = [];
+    if(e !== null){
+    e.map(eachTypeFilter=>typeFilter.push(eachTypeFilter.value))
+    }
     this.props.filteredFunds(
       "fund_type",
-      e,
+      typeFilter,
       this.props.sortKey,
       this.props.sortOrder
     );
@@ -40,7 +47,12 @@ class Filter extends Component {
     );
   };
   render() {
-    return (
+    let typeFilterChoices = [];
+     this.props.typeFilter.map(eachTypeFilter=>typeFilterChoices.push({label:eachTypeFilter,value:eachTypeFilter}))
+     let typeFilterOptions = [];
+     this.props.fund_type.map(eachTypeFilter=>typeFilterOptions.push({label:eachTypeFilter,value:eachTypeFilter}))
+    
+     return (
       <Popover>
         <PopoverTrigger>
           <Button w={["200px", "180px", "200px"]} mb="1rem">
@@ -62,7 +74,13 @@ class Filter extends Component {
             >
               Type
             </Text>
-            <CheckboxGroup
+            <Select
+             value={typeFilterChoices}
+             onChange={this.checkboxChangeType}
+             options={typeFilterOptions}
+             isMulti
+            />
+            {/* <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangeType}
               defaultValue={this.props.typeFilter}
@@ -72,7 +90,7 @@ class Filter extends Component {
                   {type}
                 </Checkbox>
               ))}
-            </CheckboxGroup>
+            </CheckboxGroup> */}
 
             <Text
               fontWeight="600"
