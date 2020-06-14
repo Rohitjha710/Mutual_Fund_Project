@@ -18,9 +18,14 @@ import { filteredFunds, resetFilter } from "../actions/mfActions";
 import { connect } from "react-redux";
 class Filter extends Component {
   checkboxChangeCategory = e => {
+
+    let categoryFilter = [];
+    if(e !== null){
+    e.map(eachCategoryFilter=>categoryFilter.push(eachCategoryFilter.value))
+    }
     this.props.filteredFunds(
       "fund_category",
-      e,
+      categoryFilter,
       this.props.sortKey,
       this.props.sortOrder
     );
@@ -39,9 +44,14 @@ class Filter extends Component {
     );
   };
   checkboxChangePlan = e => {
+
+    let planFilter = [];
+    if(e !== null){
+    e.map(eachPlanFilter=>planFilter.push(eachPlanFilter.value))
+    }
     this.props.filteredFunds(
       "plan",
-      e,
+      planFilter,
       this.props.sortKey,
       this.props.sortOrder
     );
@@ -52,6 +62,17 @@ class Filter extends Component {
      let typeFilterOptions = [];
      this.props.fund_type.map(eachTypeFilter=>typeFilterOptions.push({label:eachTypeFilter,value:eachTypeFilter}))
     
+     let planFilterChoices = [];
+     this.props.planFilter.map(eachPlanFilter=>planFilterChoices.push({label:eachPlanFilter,value:eachPlanFilter}))
+     let planFilterOptions = [];
+     this.props.plan.map(eachPlanFilter=>planFilterOptions.push({label:eachPlanFilter,value:eachPlanFilter}))
+    
+     let categoryFilterChoices = [];
+     this.props.categoryFilter.map(eachCategoryFilter=>categoryFilterChoices.push({label:eachCategoryFilter,value:eachCategoryFilter}))
+     let categoryFilterOptions = [];
+     this.props.fund_category.map(eachCategoryFilter=>categoryFilterOptions.push({label:eachCategoryFilter,value:eachCategoryFilter}))
+    
+
      return (
       <Popover>
         <PopoverTrigger>
@@ -100,7 +121,13 @@ class Filter extends Component {
             >
               Plan
             </Text>
-            <CheckboxGroup
+            <Select
+             value={planFilterChoices}
+             onChange={this.checkboxChangePlan}
+             options={planFilterOptions}
+             isMulti
+            />
+            {/* <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangePlan}
               defaultValue={this.props.planFilter}
@@ -110,7 +137,7 @@ class Filter extends Component {
                   {plan}
                 </Checkbox>
               ))}
-            </CheckboxGroup>
+            </CheckboxGroup> */}
             <Text
               fontWeight="600"
               color="hsl(0,0%,40%)"
@@ -119,7 +146,13 @@ class Filter extends Component {
             >
               Category
             </Text>
-            <CheckboxGroup
+            <Select
+             value={categoryFilterChoices}
+             onChange={this.checkboxChangeCategory}
+             options={categoryFilterOptions}
+             isMulti
+            />
+            {/* <CheckboxGroup
               variantColor="green"
               onChange={this.checkboxChangeCategory}
               defaultValue={this.props.categoryFilter}
@@ -129,7 +162,7 @@ class Filter extends Component {
                   {category}
                 </Checkbox>
               ))}
-            </CheckboxGroup>
+            </CheckboxGroup> */}
           </PopoverBody>
         </PopoverContent>
       </Popover>
