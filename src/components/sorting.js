@@ -53,22 +53,6 @@ class Sorting extends Component {
                 mr="10px"
                 w="20%" h="30px" float="right"
                 variantColor={
-                  sortKey === "name" && sortOrder === "ASC"
-                    ? "pink"
-                    : "transparent"
-                }
-                border="1px solid hsl(0,0%,40%)"
-                onClick={() => this.onChange("name", "ASC")}
-              >
-                ASC
-              </Button>
-              <Button
-                color="hsl(0,0%,40%)"
-                fontSize="10px"
-                fontWeight="600"
-                mr="10px"
-                w="20%" h="30px" float="right"
-                variantColor={
                   sortKey === "name" && sortOrder === "desc"
                     ? "pink"
                     : "transparent"
@@ -78,11 +62,6 @@ class Sorting extends Component {
               >
                 DESC
               </Button>
-            </Box>
-            <Box className="sortParams">
-              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
-                CATEGORY
-              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -90,15 +69,21 @@ class Sorting extends Component {
                 mr="10px"
                 w="20%" h="30px" float="right"
                 variantColor={
-                  sortKey === "fund_category" && sortOrder === "ASC"
+                  sortKey === "name" && sortOrder === "ASC"
                     ? "pink"
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,40%)"
-                onClick={() => this.onChange("fund_category", "ASC")}
+                onClick={() => this.onChange("name", "ASC")}
               >
                 ASC
               </Button>
+              
+            </Box>
+            <Box className="sortParams">
+              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
+                CATEGORY
+              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -115,11 +100,6 @@ class Sorting extends Component {
               >
                 DESC
               </Button>
-            </Box>
-            <Box className="sortParams">
-              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
-                TYPE
-              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -127,15 +107,21 @@ class Sorting extends Component {
                 mr="10px"
                 w="20%" h="30px" float="right"
                 variantColor={
-                  sortKey === "fund_type" && sortOrder === "ASC"
+                  sortKey === "fund_category" && sortOrder === "ASC"
                     ? "pink"
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,40%)"
-                onClick={() => this.onChange("fund_type", "ASC")}
+                onClick={() => this.onChange("fund_category", "ASC")}
               >
                 ASC
               </Button>
+              
+            </Box>
+            <Box className="sortParams">
+              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
+                TYPE
+              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -152,12 +138,6 @@ class Sorting extends Component {
               >
                 DESC
               </Button>
-            </Box>
-            <Box className="sortParams">
-              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
-                {" "}
-                PLAN
-              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -165,15 +145,22 @@ class Sorting extends Component {
                 mr="10px"
                 w="20%" h="30px" float="right"
                 variantColor={
-                  sortKey === "plan" && sortOrder === "ASC"
+                  sortKey === "fund_type" && sortOrder === "ASC"
                     ? "pink"
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,40%)"
-                onClick={() => this.onChange("plan", "ASC")}
+                onClick={() => this.onChange("fund_type", "ASC")}
               >
                 ASC
               </Button>
+              
+            </Box>
+            <Box className="sortParams">
+              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
+                {" "}
+                PLAN
+              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -190,11 +177,6 @@ class Sorting extends Component {
               >
                 DESC
               </Button>
-            </Box>
-            <Box className="sortParams">
-              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
-                1Y RETURNS
-              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -202,15 +184,21 @@ class Sorting extends Component {
                 mr="10px"
                 w="20%" h="30px" float="right"
                 variantColor={
-                  sortKey === "year_1" && sortOrder === "ASC"
+                  sortKey === "plan" && sortOrder === "ASC"
                     ? "pink"
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,40%)"
-                onClick={() => this.onChange("year_1", "ASC")}
+                onClick={() => this.onChange("plan", "ASC")}
               >
-                LOW
+                ASC
               </Button>
+              
+            </Box>
+            <Box className="sortParams">
+              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
+                1Y RETURNS
+              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -227,11 +215,6 @@ class Sorting extends Component {
               >
                 HIGH
               </Button>
-            </Box>{" "}
-            <Box className="sortParams">
-              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
-                3Y RETURNS
-              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -239,15 +222,21 @@ class Sorting extends Component {
                 mr="10px"
                 w="20%" h="30px" float="right"
                 variantColor={
-                  sortKey === "year_3" && sortOrder === "ASC"
+                  sortKey === "year_1" && sortOrder === "ASC"
                     ? "pink"
                     : "transparent"
                 }
                 border="1px solid hsl(0,0%,40%)"
-                onClick={() => this.onChange("year_3", "ASC")}
+                onClick={() => this.onChange("year_1", "ASC")}
               >
                 LOW
               </Button>
+              
+            </Box>{" "}
+            <Box className="sortParams">
+              <Text color="hsl(0,0%,40%)" display="inline" fontSize="10px" fontWeight="600">
+                3Y RETURNS
+              </Text>
               <Button
                 color="hsl(0,0%,40%)"
                 fontSize="10px"
@@ -264,6 +253,23 @@ class Sorting extends Component {
               >
                 HIGH
               </Button>
+              <Button
+                color="hsl(0,0%,40%)"
+                fontSize="10px"
+                fontWeight="600"
+                mr="10px"
+                w="20%" h="30px" float="right"
+                variantColor={
+                  sortKey === "year_3" && sortOrder === "ASC"
+                    ? "pink"
+                    : "transparent"
+                }
+                border="1px solid hsl(0,0%,40%)"
+                onClick={() => this.onChange("year_3", "ASC")}
+              >
+                LOW
+              </Button>
+              
             </Box>
           </PopoverBody>
         </PopoverContent>
